@@ -11,18 +11,29 @@ class Solution:
         #         return i
         # return -1
 
-        #sorted in ascending order, so we can use a binary search
-        #first we need a pointer
-        pass
-        
+        # sorted in ascending order, so we can use a binary search
+        # first we need a pointer
+        left = 0
+        right = len(nums) - 1
+        pivot = len(nums) // 2
+        while left <= right:
+            pivot = left + (right - left) // 2
+            if target == nums[pivot]:
+                return pivot
+            if target < nums[pivot]:
+                right = pivot - 1
+            else:
+                left = pivot + 1
+        return -1
 
 class TestCase:
     def test(self, solution, nums, target):
-        solution.binarySearch(nums, target)
+        print(solution.binarySearch(nums, target))
 
 SolutionTester = TestCase()
 mySolution = Solution()
 
-SolutionTester.test(mySolution, [2,7,11,15], 9)
-SolutionTester.test(mySolution, [3,2,4], 6)
-SolutionTester.test(mySolution, [3,3], 6)
+SolutionTester.test(mySolution, [2,7,11,15,17,20,21], 18) #not in list
+SolutionTester.test(mySolution, [2,7,11,15,17,20,21], 20)
+SolutionTester.test(mySolution, [2,3,4,6,7], 6)
+SolutionTester.test(mySolution, [3,4,5,6,7,8,9,10,11,12,13,14], 6)
