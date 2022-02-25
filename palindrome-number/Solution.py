@@ -24,6 +24,8 @@ class Solution:
             right += 1
 
         return True
+        
+        # Also valid is return False if x < 0 else x == int(str(x)[::-1])
 
 class TestCase:
     def test(self, solution, n):
